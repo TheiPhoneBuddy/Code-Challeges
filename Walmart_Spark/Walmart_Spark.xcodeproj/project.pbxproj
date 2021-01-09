@@ -7,10 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		898E7A4525AA3BED001FCFBA /* TopMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3425AA3BEC001FCFBA /* TopMoviesViewModel.swift */; };
+		898E7A4625AA3BED001FCFBA /* TopMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3425AA3BEC001FCFBA /* TopMoviesViewModel.swift */; };
+		898E7A4725AA3BED001FCFBA /* TopMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3425AA3BEC001FCFBA /* TopMoviesViewModel.swift */; };
+		898E7A4825AA3BED001FCFBA /* TopMoviesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3525AA3BEC001FCFBA /* TopMoviesDetailViewModel.swift */; };
+		898E7A4925AA3BED001FCFBA /* TopMoviesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3525AA3BEC001FCFBA /* TopMoviesDetailViewModel.swift */; };
+		898E7A4A25AA3BED001FCFBA /* TopMoviesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3525AA3BEC001FCFBA /* TopMoviesDetailViewModel.swift */; };
+		898E7A4B25AA3BED001FCFBA /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3725AA3BEC001FCFBA /* DataModel.swift */; };
+		898E7A4C25AA3BED001FCFBA /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3725AA3BEC001FCFBA /* DataModel.swift */; };
+		898E7A4D25AA3BED001FCFBA /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3725AA3BEC001FCFBA /* DataModel.swift */; };
+		898E7A4E25AA3BED001FCFBA /* GenreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3825AA3BEC001FCFBA /* GenreDataModel.swift */; };
+		898E7A4F25AA3BED001FCFBA /* GenreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3825AA3BEC001FCFBA /* GenreDataModel.swift */; };
+		898E7A5025AA3BED001FCFBA /* GenreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3825AA3BEC001FCFBA /* GenreDataModel.swift */; };
+		898E7A5125AA3BED001FCFBA /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3A25AA3BEC001FCFBA /* Configurations.swift */; };
+		898E7A5225AA3BED001FCFBA /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3A25AA3BEC001FCFBA /* Configurations.swift */; };
+		898E7A5325AA3BED001FCFBA /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3A25AA3BEC001FCFBA /* Configurations.swift */; };
+		898E7A5425AA3BED001FCFBA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3B25AA3BEC001FCFBA /* Utils.swift */; };
+		898E7A5525AA3BED001FCFBA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3B25AA3BEC001FCFBA /* Utils.swift */; };
+		898E7A5625AA3BED001FCFBA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3B25AA3BEC001FCFBA /* Utils.swift */; };
+		898E7A5725AA3BED001FCFBA /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3E25AA3BEC001FCFBA /* CustomCell.swift */; };
+		898E7A5825AA3BED001FCFBA /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3E25AA3BEC001FCFBA /* CustomCell.swift */; };
+		898E7A5925AA3BED001FCFBA /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3E25AA3BEC001FCFBA /* CustomCell.swift */; };
+		898E7A5A25AA3BED001FCFBA /* CustomFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3F25AA3BEC001FCFBA /* CustomFooter.swift */; };
+		898E7A5B25AA3BED001FCFBA /* CustomFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3F25AA3BEC001FCFBA /* CustomFooter.swift */; };
+		898E7A5C25AA3BED001FCFBA /* CustomFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A3F25AA3BEC001FCFBA /* CustomFooter.swift */; };
+		898E7A6025AA3BED001FCFBA /* TopMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A4125AA3BEC001FCFBA /* TopMoviesView.swift */; };
+		898E7A6125AA3BED001FCFBA /* TopMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A4125AA3BEC001FCFBA /* TopMoviesView.swift */; };
+		898E7A6225AA3BED001FCFBA /* TopMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A4125AA3BEC001FCFBA /* TopMoviesView.swift */; };
+		898E7A6325AA3BED001FCFBA /* TopMoviesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A4225AA3BEC001FCFBA /* TopMoviesDetailView.swift */; };
+		898E7A6425AA3BED001FCFBA /* TopMoviesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A4225AA3BEC001FCFBA /* TopMoviesDetailView.swift */; };
+		898E7A6525AA3BED001FCFBA /* TopMoviesDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A4225AA3BEC001FCFBA /* TopMoviesDetailView.swift */; };
+		898E7A6625AA3BED001FCFBA /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A4425AA3BEC001FCFBA /* Services.swift */; };
+		898E7A6725AA3BED001FCFBA /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A4425AA3BEC001FCFBA /* Services.swift */; };
+		898E7A6825AA3BED001FCFBA /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898E7A4425AA3BEC001FCFBA /* Services.swift */; };
+		898E7A7C25AA3CA5001FCFBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898E7A7B25AA3CA5001FCFBA /* Main.storyboard */; };
+		898E7A7D25AA3CA5001FCFBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898E7A7B25AA3CA5001FCFBA /* Main.storyboard */; };
+		898E7A7E25AA3CA5001FCFBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898E7A7B25AA3CA5001FCFBA /* Main.storyboard */; };
 		89974A9B25A9889C009DB36D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974A9A25A9889C009DB36D /* AppDelegate.swift */; };
 		89974A9D25A9889C009DB36D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974A9C25A9889C009DB36D /* SceneDelegate.swift */; };
-		89974A9F25A9889C009DB36D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974A9E25A9889C009DB36D /* ViewController.swift */; };
-		89974AA225A9889C009DB36D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89974AA025A9889C009DB36D /* Main.storyboard */; };
 		89974AA425A9889F009DB36D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89974AA325A9889F009DB36D /* Assets.xcassets */; };
 		89974AA725A9889F009DB36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89974AA525A9889F009DB36D /* LaunchScreen.storyboard */; };
 		89974AB225A9889F009DB36D /* Walmart_SparkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974AB125A9889F009DB36D /* Walmart_SparkTests.swift */; };
@@ -35,11 +69,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		898E7A3425AA3BEC001FCFBA /* TopMoviesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMoviesViewModel.swift; sourceTree = "<group>"; };
+		898E7A3525AA3BEC001FCFBA /* TopMoviesDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMoviesDetailViewModel.swift; sourceTree = "<group>"; };
+		898E7A3725AA3BEC001FCFBA /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		898E7A3825AA3BEC001FCFBA /* GenreDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreDataModel.swift; sourceTree = "<group>"; };
+		898E7A3A25AA3BEC001FCFBA /* Configurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
+		898E7A3B25AA3BEC001FCFBA /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		898E7A3E25AA3BEC001FCFBA /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		898E7A3F25AA3BEC001FCFBA /* CustomFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFooter.swift; sourceTree = "<group>"; };
+		898E7A4125AA3BEC001FCFBA /* TopMoviesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMoviesView.swift; sourceTree = "<group>"; };
+		898E7A4225AA3BEC001FCFBA /* TopMoviesDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMoviesDetailView.swift; sourceTree = "<group>"; };
+		898E7A4425AA3BEC001FCFBA /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		898E7A7B25AA3CA5001FCFBA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		89974A9725A9889B009DB36D /* Walmart_Spark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Walmart_Spark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89974A9A25A9889C009DB36D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89974A9C25A9889C009DB36D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		89974A9E25A9889C009DB36D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		89974AA125A9889C009DB36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89974AA325A9889F009DB36D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89974AA625A9889F009DB36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89974AA825A9889F009DB36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,9 +120,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		898E7A3225AA3BEC001FCFBA /* SourceCode */ = {
+			isa = PBXGroup;
+			children = (
+				898E7A3625AA3BEC001FCFBA /* Models */,
+				898E7A3C25AA3BEC001FCFBA /* Views */,
+				898E7A3325AA3BEC001FCFBA /* ViewModels */,
+				898E7A4325AA3BEC001FCFBA /* Services */,
+				898E7A3925AA3BEC001FCFBA /* Common */,
+			);
+			path = SourceCode;
+			sourceTree = "<group>";
+		};
+		898E7A3325AA3BEC001FCFBA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				898E7A3425AA3BEC001FCFBA /* TopMoviesViewModel.swift */,
+				898E7A3525AA3BEC001FCFBA /* TopMoviesDetailViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		898E7A3625AA3BEC001FCFBA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				898E7A3725AA3BEC001FCFBA /* DataModel.swift */,
+				898E7A3825AA3BEC001FCFBA /* GenreDataModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		898E7A3925AA3BEC001FCFBA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				898E7A3A25AA3BEC001FCFBA /* Configurations.swift */,
+				898E7A3B25AA3BEC001FCFBA /* Utils.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		898E7A3C25AA3BEC001FCFBA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				898E7A4125AA3BEC001FCFBA /* TopMoviesView.swift */,
+				898E7A4225AA3BEC001FCFBA /* TopMoviesDetailView.swift */,
+				898E7A3D25AA3BEC001FCFBA /* CustomCells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		898E7A3D25AA3BEC001FCFBA /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				898E7A3E25AA3BEC001FCFBA /* CustomCell.swift */,
+				898E7A3F25AA3BEC001FCFBA /* CustomFooter.swift */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		898E7A4325AA3BEC001FCFBA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				898E7A4425AA3BEC001FCFBA /* Services.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		89974A8E25A9889B009DB36D = {
 			isa = PBXGroup;
 			children = (
+				898E7A3225AA3BEC001FCFBA /* SourceCode */,
 				89974A9925A9889C009DB36D /* Walmart_Spark */,
 				89974AB025A9889F009DB36D /* Walmart_SparkTests */,
 				89974ABB25A9889F009DB36D /* Walmart_SparkUITests */,
@@ -99,10 +210,9 @@
 		89974A9925A9889C009DB36D /* Walmart_Spark */ = {
 			isa = PBXGroup;
 			children = (
+				898E7A7B25AA3CA5001FCFBA /* Main.storyboard */,
 				89974A9A25A9889C009DB36D /* AppDelegate.swift */,
 				89974A9C25A9889C009DB36D /* SceneDelegate.swift */,
-				89974A9E25A9889C009DB36D /* ViewController.swift */,
-				89974AA025A9889C009DB36D /* Main.storyboard */,
 				89974AA325A9889F009DB36D /* Assets.xcassets */,
 				89974AA525A9889F009DB36D /* LaunchScreen.storyboard */,
 				89974AA825A9889F009DB36D /* Info.plist */,
@@ -231,9 +341,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				898E7A7C25AA3CA5001FCFBA /* Main.storyboard in Resources */,
 				89974AA725A9889F009DB36D /* LaunchScreen.storyboard in Resources */,
 				89974AA425A9889F009DB36D /* Assets.xcassets in Resources */,
-				89974AA225A9889C009DB36D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +351,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				898E7A7D25AA3CA5001FCFBA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +359,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				898E7A7E25AA3CA5001FCFBA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +370,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89974A9F25A9889C009DB36D /* ViewController.swift in Sources */,
+				898E7A6325AA3BED001FCFBA /* TopMoviesDetailView.swift in Sources */,
+				898E7A5A25AA3BED001FCFBA /* CustomFooter.swift in Sources */,
+				898E7A6625AA3BED001FCFBA /* Services.swift in Sources */,
+				898E7A4525AA3BED001FCFBA /* TopMoviesViewModel.swift in Sources */,
+				898E7A6025AA3BED001FCFBA /* TopMoviesView.swift in Sources */,
+				898E7A5725AA3BED001FCFBA /* CustomCell.swift in Sources */,
+				898E7A5425AA3BED001FCFBA /* Utils.swift in Sources */,
+				898E7A5125AA3BED001FCFBA /* Configurations.swift in Sources */,
+				898E7A4E25AA3BED001FCFBA /* GenreDataModel.swift in Sources */,
+				898E7A4825AA3BED001FCFBA /* TopMoviesDetailViewModel.swift in Sources */,
 				89974A9B25A9889C009DB36D /* AppDelegate.swift in Sources */,
 				89974A9D25A9889C009DB36D /* SceneDelegate.swift in Sources */,
+				898E7A4B25AA3BED001FCFBA /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +391,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				89974AB225A9889F009DB36D /* Walmart_SparkTests.swift in Sources */,
+				898E7A6725AA3BED001FCFBA /* Services.swift in Sources */,
+				898E7A4C25AA3BED001FCFBA /* DataModel.swift in Sources */,
+				898E7A5225AA3BED001FCFBA /* Configurations.swift in Sources */,
+				898E7A5525AA3BED001FCFBA /* Utils.swift in Sources */,
+				898E7A4925AA3BED001FCFBA /* TopMoviesDetailViewModel.swift in Sources */,
+				898E7A4F25AA3BED001FCFBA /* GenreDataModel.swift in Sources */,
+				898E7A5825AA3BED001FCFBA /* CustomCell.swift in Sources */,
+				898E7A5B25AA3BED001FCFBA /* CustomFooter.swift in Sources */,
+				898E7A6425AA3BED001FCFBA /* TopMoviesDetailView.swift in Sources */,
+				898E7A4625AA3BED001FCFBA /* TopMoviesViewModel.swift in Sources */,
+				898E7A6125AA3BED001FCFBA /* TopMoviesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +410,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				89974ABD25A9889F009DB36D /* Walmart_SparkUITests.swift in Sources */,
+				898E7A6825AA3BED001FCFBA /* Services.swift in Sources */,
+				898E7A4D25AA3BED001FCFBA /* DataModel.swift in Sources */,
+				898E7A5325AA3BED001FCFBA /* Configurations.swift in Sources */,
+				898E7A5625AA3BED001FCFBA /* Utils.swift in Sources */,
+				898E7A4A25AA3BED001FCFBA /* TopMoviesDetailViewModel.swift in Sources */,
+				898E7A5025AA3BED001FCFBA /* GenreDataModel.swift in Sources */,
+				898E7A5925AA3BED001FCFBA /* CustomCell.swift in Sources */,
+				898E7A5C25AA3BED001FCFBA /* CustomFooter.swift in Sources */,
+				898E7A6525AA3BED001FCFBA /* TopMoviesDetailView.swift in Sources */,
+				898E7A4725AA3BED001FCFBA /* TopMoviesViewModel.swift in Sources */,
+				898E7A6225AA3BED001FCFBA /* TopMoviesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +440,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		89974AA025A9889C009DB36D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				89974AA125A9889C009DB36D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		89974AA525A9889F009DB36D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -437,16 +573,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = CAE5A95423;
 				INFOPLIST_FILE = Walmart_Spark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Walmart-Spark";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -456,16 +594,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = CAE5A95423;
 				INFOPLIST_FILE = Walmart_Spark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Walmart-Spark";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
