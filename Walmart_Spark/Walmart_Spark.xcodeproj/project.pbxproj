@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		89974A9B25A9889C009DB36D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974A9A25A9889C009DB36D /* AppDelegate.swift */; };
+		89974A9D25A9889C009DB36D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974A9C25A9889C009DB36D /* SceneDelegate.swift */; };
+		89974A9F25A9889C009DB36D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974A9E25A9889C009DB36D /* ViewController.swift */; };
+		89974AA225A9889C009DB36D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89974AA025A9889C009DB36D /* Main.storyboard */; };
+		89974AA425A9889F009DB36D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89974AA325A9889F009DB36D /* Assets.xcassets */; };
+		89974AA725A9889F009DB36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89974AA525A9889F009DB36D /* LaunchScreen.storyboard */; };
+		89974AB225A9889F009DB36D /* Walmart_SparkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974AB125A9889F009DB36D /* Walmart_SparkTests.swift */; };
+		89974ABD25A9889F009DB36D /* Walmart_SparkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974ABC25A9889F009DB36D /* Walmart_SparkUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		89974AAE25A9889F009DB36D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 89974A8F25A9889B009DB36D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89974A9625A9889B009DB36D;
+			remoteInfo = Walmart_Spark;
+		};
+		89974AB925A9889F009DB36D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 89974A8F25A9889B009DB36D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89974A9625A9889B009DB36D;
+			remoteInfo = Walmart_Spark;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		89974A9725A9889B009DB36D /* Walmart_Spark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Walmart_Spark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89974A9A25A9889C009DB36D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		89974A9C25A9889C009DB36D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		89974A9E25A9889C009DB36D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		89974AA125A9889C009DB36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		89974AA325A9889F009DB36D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		89974AA625A9889F009DB36D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89974AA825A9889F009DB36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89974AAD25A9889F009DB36D /* Walmart_SparkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Walmart_SparkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		89974AB125A9889F009DB36D /* Walmart_SparkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walmart_SparkTests.swift; sourceTree = "<group>"; };
+		89974AB325A9889F009DB36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89974AB825A9889F009DB36D /* Walmart_SparkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Walmart_SparkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		89974ABC25A9889F009DB36D /* Walmart_SparkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walmart_SparkUITests.swift; sourceTree = "<group>"; };
+		89974ABE25A988A0009DB36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		89974A9425A9889B009DB36D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89974AAA25A9889F009DB36D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89974AB525A9889F009DB36D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		89974A8E25A9889B009DB36D = {
+			isa = PBXGroup;
+			children = (
+				89974A9925A9889C009DB36D /* Walmart_Spark */,
+				89974AB025A9889F009DB36D /* Walmart_SparkTests */,
+				89974ABB25A9889F009DB36D /* Walmart_SparkUITests */,
+				89974A9825A9889B009DB36D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		89974A9825A9889B009DB36D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89974A9725A9889B009DB36D /* Walmart_Spark.app */,
+				89974AAD25A9889F009DB36D /* Walmart_SparkTests.xctest */,
+				89974AB825A9889F009DB36D /* Walmart_SparkUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89974A9925A9889C009DB36D /* Walmart_Spark */ = {
+			isa = PBXGroup;
+			children = (
+				89974A9A25A9889C009DB36D /* AppDelegate.swift */,
+				89974A9C25A9889C009DB36D /* SceneDelegate.swift */,
+				89974A9E25A9889C009DB36D /* ViewController.swift */,
+				89974AA025A9889C009DB36D /* Main.storyboard */,
+				89974AA325A9889F009DB36D /* Assets.xcassets */,
+				89974AA525A9889F009DB36D /* LaunchScreen.storyboard */,
+				89974AA825A9889F009DB36D /* Info.plist */,
+			);
+			path = Walmart_Spark;
+			sourceTree = "<group>";
+		};
+		89974AB025A9889F009DB36D /* Walmart_SparkTests */ = {
+			isa = PBXGroup;
+			children = (
+				89974AB125A9889F009DB36D /* Walmart_SparkTests.swift */,
+				89974AB325A9889F009DB36D /* Info.plist */,
+			);
+			path = Walmart_SparkTests;
+			sourceTree = "<group>";
+		};
+		89974ABB25A9889F009DB36D /* Walmart_SparkUITests */ = {
+			isa = PBXGroup;
+			children = (
+				89974ABC25A9889F009DB36D /* Walmart_SparkUITests.swift */,
+				89974ABE25A988A0009DB36D /* Info.plist */,
+			);
+			path = Walmart_SparkUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		89974A9625A9889B009DB36D /* Walmart_Spark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89974AC125A988A0009DB36D /* Build configuration list for PBXNativeTarget "Walmart_Spark" */;
+			buildPhases = (
+				89974A9325A9889B009DB36D /* Sources */,
+				89974A9425A9889B009DB36D /* Frameworks */,
+				89974A9525A9889B009DB36D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Walmart_Spark;
+			productName = Walmart_Spark;
+			productReference = 89974A9725A9889B009DB36D /* Walmart_Spark.app */;
+			productType = "com.apple.product-type.application";
+		};
+		89974AAC25A9889F009DB36D /* Walmart_SparkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89974AC425A988A0009DB36D /* Build configuration list for PBXNativeTarget "Walmart_SparkTests" */;
+			buildPhases = (
+				89974AA925A9889F009DB36D /* Sources */,
+				89974AAA25A9889F009DB36D /* Frameworks */,
+				89974AAB25A9889F009DB36D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89974AAF25A9889F009DB36D /* PBXTargetDependency */,
+			);
+			name = Walmart_SparkTests;
+			productName = Walmart_SparkTests;
+			productReference = 89974AAD25A9889F009DB36D /* Walmart_SparkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		89974AB725A9889F009DB36D /* Walmart_SparkUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89974AC725A988A0009DB36D /* Build configuration list for PBXNativeTarget "Walmart_SparkUITests" */;
+			buildPhases = (
+				89974AB425A9889F009DB36D /* Sources */,
+				89974AB525A9889F009DB36D /* Frameworks */,
+				89974AB625A9889F009DB36D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89974ABA25A9889F009DB36D /* PBXTargetDependency */,
+			);
+			name = Walmart_SparkUITests;
+			productName = Walmart_SparkUITests;
+			productReference = 89974AB825A9889F009DB36D /* Walmart_SparkUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		89974A8F25A9889B009DB36D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					89974A9625A9889B009DB36D = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					89974AAC25A9889F009DB36D = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 89974A9625A9889B009DB36D;
+					};
+					89974AB725A9889F009DB36D = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 89974A9625A9889B009DB36D;
+					};
+				};
+			};
+			buildConfigurationList = 89974A9225A9889B009DB36D /* Build configuration list for PBXProject "Walmart_Spark" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 89974A8E25A9889B009DB36D;
+			productRefGroup = 89974A9825A9889B009DB36D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				89974A9625A9889B009DB36D /* Walmart_Spark */,
+				89974AAC25A9889F009DB36D /* Walmart_SparkTests */,
+				89974AB725A9889F009DB36D /* Walmart_SparkUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		89974A9525A9889B009DB36D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89974AA725A9889F009DB36D /* LaunchScreen.storyboard in Resources */,
+				89974AA425A9889F009DB36D /* Assets.xcassets in Resources */,
+				89974AA225A9889C009DB36D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89974AAB25A9889F009DB36D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89974AB625A9889F009DB36D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		89974A9325A9889B009DB36D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89974A9F25A9889C009DB36D /* ViewController.swift in Sources */,
+				89974A9B25A9889C009DB36D /* AppDelegate.swift in Sources */,
+				89974A9D25A9889C009DB36D /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89974AA925A9889F009DB36D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89974AB225A9889F009DB36D /* Walmart_SparkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89974AB425A9889F009DB36D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89974ABD25A9889F009DB36D /* Walmart_SparkUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		89974AAF25A9889F009DB36D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89974A9625A9889B009DB36D /* Walmart_Spark */;
+			targetProxy = 89974AAE25A9889F009DB36D /* PBXContainerItemProxy */;
+		};
+		89974ABA25A9889F009DB36D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89974A9625A9889B009DB36D /* Walmart_Spark */;
+			targetProxy = 89974AB925A9889F009DB36D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		89974AA025A9889C009DB36D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89974AA125A9889C009DB36D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		89974AA525A9889F009DB36D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89974AA625A9889F009DB36D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		89974ABF25A988A0009DB36D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		89974AC025A988A0009DB36D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		89974AC225A988A0009DB36D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CAE5A95423;
+				INFOPLIST_FILE = Walmart_Spark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Walmart-Spark";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		89974AC325A988A0009DB36D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CAE5A95423;
+				INFOPLIST_FILE = Walmart_Spark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Walmart-Spark";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		89974AC525A988A0009DB36D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CAE5A95423;
+				INFOPLIST_FILE = Walmart_SparkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Walmart-SparkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Walmart_Spark.app/Walmart_Spark";
+			};
+			name = Debug;
+		};
+		89974AC625A988A0009DB36D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CAE5A95423;
+				INFOPLIST_FILE = Walmart_SparkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Walmart-SparkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Walmart_Spark.app/Walmart_Spark";
+			};
+			name = Release;
+		};
+		89974AC825A988A0009DB36D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CAE5A95423;
+				INFOPLIST_FILE = Walmart_SparkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Walmart-SparkUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Walmart_Spark;
+			};
+			name = Debug;
+		};
+		89974AC925A988A0009DB36D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CAE5A95423;
+				INFOPLIST_FILE = Walmart_SparkUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Walmart-SparkUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Walmart_Spark;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89974A9225A9889B009DB36D /* Build configuration list for PBXProject "Walmart_Spark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89974ABF25A988A0009DB36D /* Debug */,
+				89974AC025A988A0009DB36D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89974AC125A988A0009DB36D /* Build configuration list for PBXNativeTarget "Walmart_Spark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89974AC225A988A0009DB36D /* Debug */,
+				89974AC325A988A0009DB36D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89974AC425A988A0009DB36D /* Build configuration list for PBXNativeTarget "Walmart_SparkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89974AC525A988A0009DB36D /* Debug */,
+				89974AC625A988A0009DB36D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89974AC725A988A0009DB36D /* Build configuration list for PBXNativeTarget "Walmart_SparkUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89974AC825A988A0009DB36D /* Debug */,
+				89974AC925A988A0009DB36D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 89974A8F25A9889B009DB36D /* Project object */;
+}
