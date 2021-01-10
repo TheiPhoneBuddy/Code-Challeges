@@ -41,9 +41,8 @@ class TopMoviesView: UITableViewController,
         //from images cache.
         viewModel.removeAll()
     }
-}
-
-extension TopMoviesView {
+    
+    //Tableview method(s)
     override func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections
     }
@@ -97,9 +96,8 @@ extension TopMoviesView {
             obj.selectedRow = viewModel.getSelectedRow
         }
     }
-}
 
-extension TopMoviesView {
+    //Used for fetching data
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height

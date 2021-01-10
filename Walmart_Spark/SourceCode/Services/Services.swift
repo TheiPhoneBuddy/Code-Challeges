@@ -71,27 +71,26 @@ class Services:NSObject {
         
         let config:URLSessionConfiguration = URLSessionConfiguration.default
         let session:URLSession = URLSession(configuration: config)
-
+        
+        weak var weakSelf = self
         if let url = URL(string: request.urlString) {
-           let task = session.dataTask(with: url, completionHandler:{
-                       [parseTopMoviesData,parseGenreData,executeCallback]
+           let task = session.dataTask(with: url,
+                      completionHandler:{
+                       [executeCallback]
             (data, resp, error) in
                 if error == nil {
                     if request.endPoint == EndPoint.TopMovies {
-                        parseTopMoviesData(data ?? Data())
+                        weakSelf?.response.dataModel = Utils.decode(data ?? Data()) as DataModel
                     } else if request.endPoint == EndPoint.Genres  {
-                        parseGenreData(data ?? Data())
-                    } else if request.endPoint == EndPoint.Photos  {
-                        self.response.data = data ?? Data()
-                        executeCallback()
+                        weakSelf?.response.genreDataModel = Utils.decode(data ?? Data()) as GenreDataModel
                     } else {
-                        self.response.errorMsg = "'EndPoint' param required."
-                        executeCallback()
+                        //Photos
+                        weakSelf?.response.data = data ?? Data()
                     }
                 } else {
-                   self.response.errorMsg = error?.localizedDescription ?? "Error"
-                   executeCallback()
+                    weakSelf?.response.errorMsg = error?.localizedDescription ?? "Error"
                 }
+                executeCallback()
             })
             task.resume()
         } else {
@@ -100,47 +99,12 @@ class Services:NSObject {
         }
     }
 
+    //executeCallback
     fileprivate func executeCallback() {
         if let callback = self.callback {
            callback(self.response)
         }else{
            delegate?.didMakeRequestFailed("'callback()' is nil.")
-        }
-    }
-    
-    //parseTopMoviesData
-    fileprivate func parseTopMoviesData(_ data:Data) {
-        do {
-            let decoder = JSONDecoder()
-            let dataModel:DataModel? = try decoder.decode(DataModel.self,
-                                                          from:data)
-                if let dataModel = dataModel {
-                    response.dataModel = dataModel
-                } else {
-                    response.errorMsg = "Invalid json."
-                }
-                executeCallback()
-        } catch {
-            response.errorMsg = "Parse error!"
-            executeCallback()
-        }
-    }
-
-    //parseGenreData
-    fileprivate func parseGenreData(_ data:Data) {
-        do {
-            let decoder = JSONDecoder()
-            let genreDataModel:GenreDataModel? = try decoder.decode(
-                               GenreDataModel.self,from:data)
-                if let genreDataModel = genreDataModel {
-                   response.genreDataModel = genreDataModel
-                } else {
-                   response.errorMsg = "Invalid json."
-                }
-                executeCallback()
-        } catch {
-            response.errorMsg = "Parse error!"
-            executeCallback()
         }
     }
 }
