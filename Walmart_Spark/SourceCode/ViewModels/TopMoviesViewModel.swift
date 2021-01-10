@@ -26,34 +26,12 @@ class TopMoviesViewModel:NSObject,ServicesDelegate {
     private var total_pages:Int = 1
     private var total_results:Int = 0
 
-    private var MAX_PAGES:Int = 10
+    private var MAX_PAGES:Int = 5
 
     //Store downloaded image data
     private var images: Dictionary<String,Any> = [:]
 
-    //Services Delegate Method(s)
-    func didMakeRequestSuccess(_ dataModel:DataModel) {
-         if currentPage == 1 {
-            self.dataModel = dataModel
-         } else {
-            self.dataModel.results.append(contentsOf: dataModel.results)
-         }
-
-         currentPage = currentPage + 1
-         loading = false
-        
-         self.page = self.dataModel.page
-         self.total_pages = self.dataModel.total_pages
-         self.total_results = self.dataModel.total_results
-
-         delegate?.didMakeRequestSuccess()
-    }
-    
-    func didGetGenreSuccess(_ genreDataModel:GenreDataModel){
-        self.genreDataModel = genreDataModel
-        services.getTopMovies(currentPage)
-    }
-
+    //Services Delegate Method
     func didMakeRequestFailed(_ errorMsg:String){
          currentPage = currentPage + 1
          loading = false
@@ -71,20 +49,77 @@ class TopMoviesViewModel:NSObject,ServicesDelegate {
     var getCurrentPage:Int {
         return currentPage
     }
-
+    
     //getTopMovies
     func getTopMovies(){
         services.delegate = self
         if (!loading) {
             loading = true
             if genreDataModel.genres.count == 0 {
-               services.getGenres()
+               getGenres()
             } else {
-               services.getTopMovies(currentPage)
-           }
+               topMoviesRequest()
+            }
        }
     }
+
+    //updateCurrentPage
+    fileprivate func updateCurrentPage(_ response:Services.Response) {
+        if currentPage == 1 {
+           dataModel = response.dataModel
+        } else {
+           dataModel.results.append(contentsOf:response.dataModel.results)
+        }
+
+        currentPage = currentPage + 1
+        loading = false
+       
+        page = dataModel.page
+        total_pages = dataModel.total_pages
+        total_results = dataModel.total_results
+
+        delegate?.didMakeRequestSuccess()
+    }
     
+    //topMoviesRequest
+    fileprivate func topMoviesRequest(){
+        var request:Services.Request = Services.Request()
+        request.endPoint = Services.EndPoint.TopMovies
+        request.urlString = Configurations.topMoviesURL() + "&page=" + String(currentPage)
+        
+        #if DEBUG
+        print(request.urlString)
+        #endif
+        
+        weak var weakSelf = self
+        Services.makeRequest(request,
+            callback:{[updateCurrentPage](response:Services.Response) -> Void in
+            if response.errorMsg == "" {
+               updateCurrentPage(response)
+            }else{
+               weakSelf?.delegate?.didMakeRequestFailed(response.errorMsg)
+            }
+        })
+    }
+
+    //getGenres
+    fileprivate func getGenres(){
+        var request:Services.Request = Services.Request()
+        request.endPoint = Services.EndPoint.Genres
+        request.urlString = Configurations.genreURL()
+        
+        weak var weakSelf = self
+        Services.makeRequest(request,
+            callback:{[topMoviesRequest](response:Services.Response) -> Void in
+            if response.errorMsg == "" {
+               weakSelf?.genreDataModel = response.genreDataModel
+               topMoviesRequest()
+            }else{
+               weakSelf?.delegate?.didMakeRequestFailed(response.errorMsg)
+            }
+        })
+    }
+
     var numberOfSections:Int {
         return 1
     }
@@ -123,15 +158,24 @@ class TopMoviesViewModel:NSObject,ServicesDelegate {
             return
         }
         
-        let url:String = Configurations.photoUrl  + result.poster_path
-        let obj:Services = Services()
+        var request:Services.Request = Services.Request()
+        request.endPoint = Services.EndPoint.Photos
+        request.urlString = Configurations.photoUrl  + result.poster_path
+        
         weak var weakSelf = self
-        obj.getImage(url) { (data) in
-            completion(data)
-            DispatchQueue.main.async {
-                weakSelf?.images[result.poster_path] = data
+        Services.makeRequest(request,
+            callback:{(response:Services.Response) -> Void in
+            if response.errorMsg == "" {
+                DispatchQueue.main.async {
+                   weakSelf?.images[result.poster_path] = response.data
+                   completion(response.data)
+                }
+            }else{
+               #if DEBUG
+               print(response.errorMsg)
+               #endif
             }
-        }
+        })
     }
     
     //title
