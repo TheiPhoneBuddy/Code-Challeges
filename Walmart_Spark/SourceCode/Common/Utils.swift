@@ -8,6 +8,17 @@ import Foundation
 import UIKit
 
 class Utils {
+    //decode
+    static func decode<T: Codable>(_ data: Data) -> T {
+         let decoder = JSONDecoder()
+
+         guard let decodedData = try? decoder.decode(T.self, from: data) else {
+            fatalError("Failed to decode data.")
+         }
+
+         return decodedData
+     }
+    
     //getPathToFile
     static func getPathToFile(_ fileName:String,
                        fileExtension:String? = "json") -> String {
