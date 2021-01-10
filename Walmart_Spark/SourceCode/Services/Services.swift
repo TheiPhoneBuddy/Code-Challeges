@@ -17,6 +17,7 @@ class Services:NSObject {
         case TopMovies
         case Genres
         case Photos
+        case Movie
     }
     
     //Request
@@ -34,12 +35,15 @@ class Services:NSObject {
     struct Response {
         var dataModel:DataModel
         var genreDataModel:GenreDataModel
+        var movieDataModel:MovieDataModel
+
         var data:Data
         var errorMsg:String
 
         init() {
             self.dataModel = DataModel()
             self.genreDataModel = GenreDataModel()
+            self.movieDataModel = MovieDataModel()
             self.data = Data()
             self.errorMsg = ""
         }
@@ -83,6 +87,8 @@ class Services:NSObject {
                         weakSelf?.response.dataModel = Utils.decode(data ?? Data()) as DataModel
                     } else if request.endPoint == EndPoint.Genres  {
                         weakSelf?.response.genreDataModel = Utils.decode(data ?? Data()) as GenreDataModel
+                    } else if request.endPoint == EndPoint.Movie  {
+                        weakSelf?.response.movieDataModel = Utils.decode(data ?? Data()) as MovieDataModel
                     } else {
                         //Photos
                         weakSelf?.response.data = data ?? Data()

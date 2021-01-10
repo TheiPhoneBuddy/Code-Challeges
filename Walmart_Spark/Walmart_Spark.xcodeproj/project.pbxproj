@@ -49,6 +49,9 @@
 		89974AA725A9889F009DB36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89974AA525A9889F009DB36D /* LaunchScreen.storyboard */; };
 		89974AB225A9889F009DB36D /* Walmart_SparkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974AB125A9889F009DB36D /* Walmart_SparkTests.swift */; };
 		89974ABD25A9889F009DB36D /* Walmart_SparkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974ABC25A9889F009DB36D /* Walmart_SparkUITests.swift */; };
+		89D09E6125ABB24D003C4CFF /* MovieDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D09E6025ABB24D003C4CFF /* MovieDataModel.swift */; };
+		89D09E6225ABB24D003C4CFF /* MovieDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D09E6025ABB24D003C4CFF /* MovieDataModel.swift */; };
+		89D09E6325ABB24D003C4CFF /* MovieDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D09E6025ABB24D003C4CFF /* MovieDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,7 @@
 		89974AB825A9889F009DB36D /* Walmart_SparkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Walmart_SparkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89974ABC25A9889F009DB36D /* Walmart_SparkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walmart_SparkUITests.swift; sourceTree = "<group>"; };
 		89974ABE25A988A0009DB36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89D09E6025ABB24D003C4CFF /* MovieDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 			children = (
 				898E7A3725AA3BEC001FCFBA /* DataModel.swift */,
 				898E7A3825AA3BEC001FCFBA /* GenreDataModel.swift */,
+				89D09E6025ABB24D003C4CFF /* MovieDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 			files = (
 				898E7A6325AA3BED001FCFBA /* TopMoviesDetailView.swift in Sources */,
 				898E7A5A25AA3BED001FCFBA /* CustomFooter.swift in Sources */,
+				89D09E6125ABB24D003C4CFF /* MovieDataModel.swift in Sources */,
 				898E7A6625AA3BED001FCFBA /* Services.swift in Sources */,
 				898E7A4525AA3BED001FCFBA /* TopMoviesViewModel.swift in Sources */,
 				898E7A6025AA3BED001FCFBA /* TopMoviesView.swift in Sources */,
@@ -400,6 +406,7 @@
 				898E7A5825AA3BED001FCFBA /* CustomCell.swift in Sources */,
 				898E7A5B25AA3BED001FCFBA /* CustomFooter.swift in Sources */,
 				898E7A6425AA3BED001FCFBA /* TopMoviesDetailView.swift in Sources */,
+				89D09E6225ABB24D003C4CFF /* MovieDataModel.swift in Sources */,
 				898E7A4625AA3BED001FCFBA /* TopMoviesViewModel.swift in Sources */,
 				898E7A6125AA3BED001FCFBA /* TopMoviesView.swift in Sources */,
 			);
@@ -419,6 +426,7 @@
 				898E7A5925AA3BED001FCFBA /* CustomCell.swift in Sources */,
 				898E7A5C25AA3BED001FCFBA /* CustomFooter.swift in Sources */,
 				898E7A6525AA3BED001FCFBA /* TopMoviesDetailView.swift in Sources */,
+				89D09E6325ABB24D003C4CFF /* MovieDataModel.swift in Sources */,
 				898E7A4725AA3BED001FCFBA /* TopMoviesViewModel.swift in Sources */,
 				898E7A6225AA3BED001FCFBA /* TopMoviesView.swift in Sources */,
 			);
