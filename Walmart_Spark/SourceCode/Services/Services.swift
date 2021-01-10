@@ -8,109 +8,139 @@
 import Foundation
 
 protocol ServicesDelegate:class {
-    func didMakeRequestSuccess(_ dataModel:DataModel)
-    func didGetGenreSuccess(_ genreDataModel:GenreDataModel)
     func didMakeRequestFailed(_ errorMsg:String)
 }
 
 class Services:NSObject {
-    public weak var delegate: ServicesDelegate?
-
-    //getTopMovies
-    func getTopMovies(_ page:Int = 1){
-        let urlString:String = Configurations.topMoviesURL()
-        let request: String = urlString + "&page=" + String(page)
-        
-        #if DEBUG
-        print("\n\n",request,"\n\n")
-        #endif
-        
-        getData(request:request) {[parseTopMoviesData](data) in
-            parseTopMoviesData(data)
-        }
-    }
-
-    //getGenres
-    func getGenres(){
-        let urlString:String = Configurations.genreURL()        
-        let request: String = urlString
-        getData(request:request) {[parseGenreData](data) in
-            parseGenreData(data)
-        }
+    //EndPoint
+    enum EndPoint:Int {
+        case TopMovies
+        case Genres
+        case Photos
     }
     
-    //getImage
-    func getImage(_ url:String,
-                  completion: @escaping(_ data:Data) -> Void) {
+    //Request
+    struct Request {
+        var endPoint:EndPoint
+        var urlString:String
+        
+        init() {
+            self.endPoint = EndPoint.TopMovies
+            self.urlString = ""
+        }
+    }
+
+    //Response
+    struct Response {
+        var dataModel:DataModel
+        var genreDataModel:GenreDataModel
+        var data:Data
+        var errorMsg:String
+
+        init() {
+            self.dataModel = DataModel()
+            self.genreDataModel = GenreDataModel()
+            self.data = Data()
+            self.errorMsg = ""
+        }
+    }
+
+    //Public
+    typealias callback = (Response) -> Void
+    weak var delegate: ServicesDelegate?
+    
+    //Private
+    fileprivate var callback:Services.callback?
+    fileprivate var request:Services.Request = Services.Request()
+    fileprivate var response:Services.Response = Services.Response()
+
+    //makeRequest
+    public static func makeRequest(_ request:Request,
+                                   callback:@escaping Services.callback) {
+        let obj:Services = Services()
+            obj.callback = callback
+            obj.request = request
+            obj.makeRequest(request,
+                callback:{(resp:Response) -> Void in
+                callback(resp)
+        })
+    }
+
+    fileprivate func makeRequest(_ request:Request,
+                    callback:@escaping Services.callback) -> Void {
+        
         let config:URLSessionConfiguration = URLSessionConfiguration.default
         let session:URLSession = URLSession(configuration: config)
-        
-        weak var weakSelf = self
-        if let url = URL(string: url) {
-            let task = session.dataTask(with: url, completionHandler:{
-            (data, response, error) in
-                if error != nil {
-                    weakSelf?.delegate?.didMakeRequestFailed(error?.localizedDescription ?? "Error")
+
+        if let url = URL(string: request.urlString) {
+           let task = session.dataTask(with: url, completionHandler:{
+                       [parseTopMoviesData,parseGenreData,executeCallback]
+            (data, resp, error) in
+                if error == nil {
+                    if request.endPoint == EndPoint.TopMovies {
+                        parseTopMoviesData(data ?? Data())
+                    } else if request.endPoint == EndPoint.Genres  {
+                        parseGenreData(data ?? Data())
+                    } else if request.endPoint == EndPoint.Photos  {
+                        self.response.data = data ?? Data()
+                        executeCallback()
+                    } else {
+                        self.response.errorMsg = "'EndPoint' param required."
+                        executeCallback()
+                    }
                 } else {
-                    completion(data ?? Data())
+                   self.response.errorMsg = error?.localizedDescription ?? "Error"
+                   executeCallback()
                 }
             })
             task.resume()
         } else {
-            delegate?.didMakeRequestFailed("URL error.")
-        }
-    }
-    
-    //parseGenreData
-    fileprivate func parseGenreData(_ data:Data) {
-        do {
-            let decoder = JSONDecoder()
-            let genreDataModel:GenreDataModel? = try decoder.decode(GenreDataModel.self,
-                                                          from:data)
-                if let genreDataModel = genreDataModel {
-                   delegate?.didGetGenreSuccess(genreDataModel)
-                } else {
-                   delegate?.didMakeRequestFailed("Invalid json!")
-                }
-        } catch {
-            delegate?.didMakeRequestFailed("Parse error!")
+            response.errorMsg = "Invalid url."
+            executeCallback()
         }
     }
 
-    //parseData
+    fileprivate func executeCallback() {
+        if let callback = self.callback {
+           callback(self.response)
+        }else{
+           delegate?.didMakeRequestFailed("'callback()' is nil.")
+        }
+    }
+    
+    //parseTopMoviesData
     fileprivate func parseTopMoviesData(_ data:Data) {
         do {
             let decoder = JSONDecoder()
             let dataModel:DataModel? = try decoder.decode(DataModel.self,
                                                           from:data)
                 if let dataModel = dataModel {
-                   delegate?.didMakeRequestSuccess(dataModel)
+                    response.dataModel = dataModel
                 } else {
-                   delegate?.didMakeRequestFailed("Invalid json!")
+                    response.errorMsg = "Invalid json."
                 }
+                executeCallback()
         } catch {
-            delegate?.didMakeRequestFailed("Parse error!")
+            response.errorMsg = "Parse error!"
+            executeCallback()
         }
     }
-    
-    //getData
-    fileprivate func getData(request:String, completion: @escaping(_ data:Data) -> Void) {
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        if let url:URL = URL(string: request) {
-            weak var weakSelf = self
-            let task = session.dataTask(with: url, completionHandler:{
-                (data, response, error) in
-                if error != nil {
-                   weakSelf?.delegate?.didMakeRequestFailed(error?.localizedDescription ?? "Error")
+
+    //parseGenreData
+    fileprivate func parseGenreData(_ data:Data) {
+        do {
+            let decoder = JSONDecoder()
+            let genreDataModel:GenreDataModel? = try decoder.decode(
+                               GenreDataModel.self,from:data)
+                if let genreDataModel = genreDataModel {
+                   response.genreDataModel = genreDataModel
                 } else {
-                    completion(data ?? Data())
+                   response.errorMsg = "Invalid json."
                 }
-            })
-            task.resume()
-        } else {
-            delegate?.didMakeRequestFailed("Invalid url!")
+                executeCallback()
+        } catch {
+            response.errorMsg = "Parse error!"
+            executeCallback()
         }
     }
 }
