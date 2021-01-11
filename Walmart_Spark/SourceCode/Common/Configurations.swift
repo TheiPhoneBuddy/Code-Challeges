@@ -10,7 +10,7 @@ import Foundation
 class Configurations:NSObject {
     static let key:String = "2a61185ef6a27f400fd92820ad9e8537"
     static let baseURL:String = "https://api.themoviedb.org/3/discover/movie?api_key="
-    static var photoUrl:String = "https://image.tmdb.org/t/p/w200/"
+    static var photoUrl:String = "https://image.tmdb.org/t/p/w200"
     static var genreUrl:String = "https://api.themoviedb.org/3/genre/movie/list?api_key="
     static var movieUrl:String = "https://api.themoviedb.org/3/movie/"
     

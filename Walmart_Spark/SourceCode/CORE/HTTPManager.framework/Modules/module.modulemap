@@ -1,0 +1,11 @@
+framework module HTTPManager {
+  umbrella header "HTTPManager.h"
+
+  export *
+  module * { export * }
+}
+
+module HTTPManager.Swift {
+    header "HTTPManager-Swift.h"
+    requires objc
+}

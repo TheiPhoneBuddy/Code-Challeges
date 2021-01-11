@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HTTPManager
 
 protocol ServicesDelegate:class {
     func didMakeRequestFailed(_ errorMsg:String)
@@ -36,6 +37,7 @@ class Services:NSObject {
         var dataModel:DataModel
         var genreDataModel:GenreDataModel
         var movieDataModel:MovieDataModel
+        var dictPhotos:[String:Any]
 
         var data:Data
         var errorMsg:String
@@ -44,6 +46,7 @@ class Services:NSObject {
             self.dataModel = DataModel()
             self.genreDataModel = GenreDataModel()
             self.movieDataModel = MovieDataModel()
+            self.dictPhotos = [:]
             self.data = Data()
             self.errorMsg = ""
         }
@@ -80,29 +83,72 @@ class Services:NSObject {
         if let url = URL(string: request.urlString) {
            let task = session.dataTask(with: url,
                       completionHandler:{
-                       [executeCallback]
+                       [getImages,executeCallback]
             (data, resp, error) in
                 if error == nil {
                     if request.endPoint == EndPoint.TopMovies {
                         weakSelf?.response.dataModel = Utils.decode(data ?? Data()) as DataModel
+                        getImages()
                     } else if request.endPoint == EndPoint.Genres  {
                         weakSelf?.response.genreDataModel = Utils.decode(data ?? Data()) as GenreDataModel
+                        executeCallback()
                     } else if request.endPoint == EndPoint.Movie  {
                         weakSelf?.response.movieDataModel = Utils.decode(data ?? Data()) as MovieDataModel
+                        executeCallback()
                     } else {
                         //Photos
                         weakSelf?.response.data = data ?? Data()
+                        executeCallback()
                     }
                 } else {
                     weakSelf?.response.errorMsg = error?.localizedDescription ?? "Error"
+                    executeCallback()
                 }
-                executeCallback()
             })
             task.resume()
         } else {
             response.errorMsg = "Invalid url."
             executeCallback()
         }
+    }
+
+    //getImages
+    fileprivate func getImages(){
+        var aryRequests:[[String:Any]] = []
+        for result in response.dataModel.results {
+            if result.poster_path != "" {
+                let urlString:String = Configurations.photoUrl  + result.poster_path
+                let dict: [String: String] = ["urlString":urlString,
+                                              "requestID":result.poster_path]
+                aryRequests.append(dict)
+            }
+        }
+        
+        let request: Dictionary<String,Any> = ["aryRequests":aryRequests,
+                                               "requestPerBatch":10]
+        weak var weakSelf = self
+        HTTPManager.makeRequests(request,callback:{[executeCallback](resp:Dictionary<String,Any>?,
+            errorMsg:String?) -> Void in
+            if(errorMsg != nil){
+               #if DEBUG
+               print(errorMsg ?? "")
+               #endif
+            }else{
+               if let resp = resp?["data"] {
+                  weakSelf?.response.dictPhotos = resp as? Dictionary<String,Any> ?? [:]
+               }
+                
+               #if DEBUG
+               if let resp = resp?["time"] {
+                  let time:String = resp as? String ?? ""
+                print("\n\n",
+                      weakSelf?.response.dictPhotos.count ?? 0 ,
+                      " images downloaded in:",time,"secs.\n\n")
+               }
+               #endif
+            }
+            executeCallback()
+        })
     }
 
     //executeCallback

@@ -10,6 +10,9 @@ import Foundation
 protocol TopMoviesViewModelDelegate:class {
     func didMakeRequestSuccess()
     func didMakeRequestFailed(_ errorMsg:String)
+    
+    func showProgress()
+    func hideProgress()
 }
 
 class TopMoviesViewModel:NSObject,ServicesDelegate {
@@ -26,10 +29,8 @@ class TopMoviesViewModel:NSObject,ServicesDelegate {
     private var total_pages:Int = 1
     private var total_results:Int = 0
 
-    private var MAX_PAGES:Int = 5
-
     //Store downloaded image data
-    private var images: Dictionary<String,Any> = [:]
+    private var images: [String:Any] = [:]
 
     //Services Delegate Method
     func didMakeRequestFailed(_ errorMsg:String){
@@ -43,7 +44,7 @@ class TopMoviesViewModel:NSObject,ServicesDelegate {
     }
     
     var maxPages:Int {
-        return MAX_PAGES
+        return total_pages
     }
 
     var getCurrentPage:Int {
@@ -56,68 +57,12 @@ class TopMoviesViewModel:NSObject,ServicesDelegate {
         if (!loading) {
             loading = true
             if genreDataModel.genres.count == 0 {
+               delegate?.showProgress()
                getGenres()
             } else {
                topMoviesRequest()
             }
        }
-    }
-
-    //updateCurrentPage
-    fileprivate func updateCurrentPage(_ response:Services.Response) {
-        if currentPage == 1 {
-           dataModel = response.dataModel
-        } else {
-           dataModel.results.append(contentsOf:response.dataModel.results)
-        }
-
-        currentPage = currentPage + 1
-        loading = false
-       
-        page = dataModel.page
-        total_pages = dataModel.total_pages
-        total_results = dataModel.total_results
-
-        delegate?.didMakeRequestSuccess()
-    }
-    
-    //topMoviesRequest
-    fileprivate func topMoviesRequest(){
-        var request:Services.Request = Services.Request()
-        request.endPoint = Services.EndPoint.TopMovies
-        request.urlString = Configurations.topMoviesURL() + "&page=" + String(currentPage)
-        
-        #if DEBUG
-        print(request.urlString)
-        #endif
-        
-        weak var weakSelf = self
-        Services.makeRequest(request,
-            callback:{[updateCurrentPage](response:Services.Response) -> Void in
-            if response.errorMsg == "" {
-               updateCurrentPage(response)
-            }else{
-               weakSelf?.delegate?.didMakeRequestFailed(response.errorMsg)
-            }
-        })
-    }
-
-    //getGenres
-    fileprivate func getGenres(){
-        var request:Services.Request = Services.Request()
-        request.endPoint = Services.EndPoint.Genres
-        request.urlString = Configurations.genreURL()
-        
-        weak var weakSelf = self
-        Services.makeRequest(request,
-            callback:{[topMoviesRequest](response:Services.Response) -> Void in
-            if response.errorMsg == "" {
-               weakSelf?.genreDataModel = response.genreDataModel
-               topMoviesRequest()
-            }else{
-               weakSelf?.delegate?.didMakeRequestFailed(response.errorMsg)
-            }
-        })
     }
 
     var numberOfSections:Int {
@@ -131,9 +76,8 @@ class TopMoviesViewModel:NSObject,ServicesDelegate {
     //removeAll
     func removeAll() {
         images.removeAll()
-        genreDataModel.genres.removeAll()
     }
-    
+        
     //poster_path
     func poster_path(_ i:Int,
                      completion: @escaping(_ data:Data) -> Void) {
@@ -151,31 +95,9 @@ class TopMoviesViewModel:NSObject,ServicesDelegate {
             return
         }
         
-        //Check images dictionary before downloading again.
-        if self.images[result.poster_path] != nil {
-                let data:Data? = self.images[result.poster_path] as? Data ?? Data()
-                completion(data ?? Data())
-            return
-        }
-        
-        var request:Services.Request = Services.Request()
-        request.endPoint = Services.EndPoint.Photos
-        request.urlString = Configurations.photoUrl  + result.poster_path
-        
-        weak var weakSelf = self
-        Services.makeRequest(request,
-            callback:{(response:Services.Response) -> Void in
-            if response.errorMsg == "" {
-                DispatchQueue.main.async {
-                   weakSelf?.images[result.poster_path] = response.data
-                   completion(response.data)
-                }
-            }else{
-               #if DEBUG
-               print(response.errorMsg)
-               #endif
-            }
-        })
+        //Check images dictionary.
+        let data:Data = getImage(result.poster_path)
+        completion(data)
     }
     
     //title
@@ -222,9 +144,7 @@ class TopMoviesViewModel:NSObject,ServicesDelegate {
         let poster_path = dataModel.results[i].poster_path
         
         //poster_path_imageData
-        if let data = self.images[poster_path] {
-            dataModel.results[i].poster_path_imageData = data as? Data ?? Data()
-        }
+        dataModel.results[i].poster_path_imageData = getImage(poster_path)
         
         //genre_names
         dataModel.results[i].genre_names = genre(i)
@@ -235,5 +155,82 @@ class TopMoviesViewModel:NSObject,ServicesDelegate {
     var getSelectedRow:DataModel.Result {
         return self.selectedRow
     }
-}
+    
+    //updateCurrentPage
+    fileprivate func updateCurrentPage(_ response:Services.Response) {
+        //Need to merge
+        if images.count == 0 {
+           images = response.dictPhotos
+        } else {
+           images.merge(response.dictPhotos){(current, _) in current}
+        }
+        
+        if currentPage == 1 {
+           dataModel = response.dataModel
+        } else {
+           dataModel.results.append(contentsOf:response.dataModel.results)
+        }
 
+        currentPage = currentPage + 1
+        loading = false
+       
+        page = dataModel.page
+        total_pages = dataModel.total_pages
+        total_results = dataModel.total_results
+
+        delegate?.didMakeRequestSuccess()
+    }
+    
+    //topMoviesRequest
+    fileprivate func topMoviesRequest(){
+        var request:Services.Request = Services.Request()
+        request.endPoint = Services.EndPoint.TopMovies
+        request.urlString = Configurations.topMoviesURL() + "&page=" + String(currentPage)
+        
+        #if DEBUG
+        print(request.urlString)
+        #endif
+        
+        weak var weakSelf = self
+        Services.makeRequest(request,
+            callback:{[updateCurrentPage](response:Services.Response) -> Void in
+            if response.errorMsg == "" {
+               updateCurrentPage(response)
+            }else{
+               weakSelf?.delegate?.didMakeRequestFailed(response.errorMsg)
+            }
+            weakSelf?.delegate?.hideProgress()
+        })
+    }
+
+    //getGenres
+    fileprivate func getGenres(){
+        var request:Services.Request = Services.Request()
+        request.endPoint = Services.EndPoint.Genres
+        request.urlString = Configurations.genreURL()
+        
+        weak var weakSelf = self
+        Services.makeRequest(request,
+            callback:{[topMoviesRequest](response:Services.Response) -> Void in
+            if response.errorMsg == "" {
+               weakSelf?.genreDataModel = response.genreDataModel
+               topMoviesRequest()
+            }else{
+               weakSelf?.delegate?.didMakeRequestFailed(response.errorMsg)
+               weakSelf?.delegate?.hideProgress()
+            }
+        })
+    }
+
+    //getImage
+    fileprivate func getImage(_ poster_path:String) -> Data {
+        if self.images[poster_path] != nil {
+           let dict:[String:Any] = self.images[poster_path] as? [String:Any] ?? [poster_path:Data()]
+           let data:Data = dict["data"] as? Data ?? Data()
+            
+           return data
+        } else {
+          return Data()
+        }
+    }
+}

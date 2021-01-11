@@ -10,6 +10,9 @@ import Foundation
 protocol TopMoviesDetailViewModelDelegate:class {
     func didMakeRequestSuccess(_ homepage:String)
     func didMakeRequestFailed(_ errorMsg:String)
+    
+    func showProgress()
+    func hideProgress()
 }
 
 class TopMoviesDetailViewModel:NSObject {
@@ -17,6 +20,7 @@ class TopMoviesDetailViewModel:NSObject {
 
     //getMovie
     func getMovie(_ id:Int){
+        delegate?.showProgress()
         var request:Services.Request = Services.Request()
         request.endPoint = Services.EndPoint.Movie
         request.urlString = Configurations.movieURL(id)
@@ -29,6 +33,7 @@ class TopMoviesDetailViewModel:NSObject {
             }else{
                 weakSelf?.delegate?.didMakeRequestFailed(response.errorMsg)
             }
+            weakSelf?.delegate?.hideProgress()
         })
     }
 

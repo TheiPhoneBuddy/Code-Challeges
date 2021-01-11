@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -49,6 +49,14 @@
 		89974AA725A9889F009DB36D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89974AA525A9889F009DB36D /* LaunchScreen.storyboard */; };
 		89974AB225A9889F009DB36D /* Walmart_SparkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974AB125A9889F009DB36D /* Walmart_SparkTests.swift */; };
 		89974ABD25A9889F009DB36D /* Walmart_SparkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89974ABC25A9889F009DB36D /* Walmart_SparkUITests.swift */; };
+		89CE71DF25ABF833000670DA /* HTTPManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CE71DA25ABF833000670DA /* HTTPManager.framework */; platformFilter = ios; };
+		89CE71E025ABF833000670DA /* HTTPManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CE71DA25ABF833000670DA /* HTTPManager.framework */; platformFilter = ios; };
+		89CE71E225ABF833000670DA /* ComponentKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CE71DB25ABF833000670DA /* ComponentKit.framework */; platformFilter = ios; };
+		89CE71E325ABF833000670DA /* ComponentKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CE71DB25ABF833000670DA /* ComponentKit.framework */; platformFilter = ios; };
+		89CE71F325AC080C000670DA /* ComponentKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CE71DB25ABF833000670DA /* ComponentKit.framework */; };
+		89CE71F425AC080C000670DA /* ComponentKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 89CE71DB25ABF833000670DA /* ComponentKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		89CE71F925AC0810000670DA /* HTTPManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CE71DA25ABF833000670DA /* HTTPManager.framework */; };
+		89CE71FA25AC0810000670DA /* HTTPManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 89CE71DA25ABF833000670DA /* HTTPManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		89D09E6125ABB24D003C4CFF /* MovieDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D09E6025ABB24D003C4CFF /* MovieDataModel.swift */; };
 		89D09E6225ABB24D003C4CFF /* MovieDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D09E6025ABB24D003C4CFF /* MovieDataModel.swift */; };
 		89D09E6325ABB24D003C4CFF /* MovieDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D09E6025ABB24D003C4CFF /* MovieDataModel.swift */; };
@@ -70,6 +78,21 @@
 			remoteInfo = Walmart_Spark;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		89CE71F225AC080A000670DA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				89CE71FA25AC0810000670DA /* HTTPManager.framework in Embed Frameworks */,
+				89CE71F425AC080C000670DA /* ComponentKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		898E7A3425AA3BEC001FCFBA /* TopMoviesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopMoviesViewModel.swift; sourceTree = "<group>"; };
@@ -96,6 +119,8 @@
 		89974AB825A9889F009DB36D /* Walmart_SparkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Walmart_SparkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89974ABC25A9889F009DB36D /* Walmart_SparkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walmart_SparkUITests.swift; sourceTree = "<group>"; };
 		89974ABE25A988A0009DB36D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89CE71DA25ABF833000670DA /* HTTPManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HTTPManager.framework; sourceTree = "<group>"; };
+		89CE71DB25ABF833000670DA /* ComponentKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ComponentKit.framework; sourceTree = "<group>"; };
 		89D09E6025ABB24D003C4CFF /* MovieDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +129,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89CE71F925AC0810000670DA /* HTTPManager.framework in Frameworks */,
+				89CE71F325AC080C000670DA /* ComponentKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +138,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89CE71DF25ABF833000670DA /* HTTPManager.framework in Frameworks */,
+				89CE71E225ABF833000670DA /* ComponentKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89CE71E025ABF833000670DA /* HTTPManager.framework in Frameworks */,
+				89CE71E325ABF833000670DA /* ComponentKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +158,7 @@
 		898E7A3225AA3BEC001FCFBA /* SourceCode */ = {
 			isa = PBXGroup;
 			children = (
+				89CE71D925ABF833000670DA /* CORE */,
 				898E7A3625AA3BEC001FCFBA /* Models */,
 				898E7A3C25AA3BEC001FCFBA /* Views */,
 				898E7A3325AA3BEC001FCFBA /* ViewModels */,
@@ -243,6 +275,15 @@
 			path = Walmart_SparkUITests;
 			sourceTree = "<group>";
 		};
+		89CE71D925ABF833000670DA /* CORE */ = {
+			isa = PBXGroup;
+			children = (
+				89CE71DA25ABF833000670DA /* HTTPManager.framework */,
+				89CE71DB25ABF833000670DA /* ComponentKit.framework */,
+			);
+			path = CORE;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,6 +294,7 @@
 				89974A9325A9889B009DB36D /* Sources */,
 				89974A9425A9889B009DB36D /* Frameworks */,
 				89974A9525A9889B009DB36D /* Resources */,
+				89CE71F225AC080A000670DA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -583,6 +625,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = CAE5A95423;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SourceCode/CORE",
+				);
 				INFOPLIST_FILE = Walmart_Spark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -604,6 +650,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = CAE5A95423;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SourceCode/CORE",
+				);
 				INFOPLIST_FILE = Walmart_Spark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -624,6 +674,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CAE5A95423;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SourceCode/CORE",
+				);
 				INFOPLIST_FILE = Walmart_SparkTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -646,6 +700,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CAE5A95423;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SourceCode/CORE",
+				);
 				INFOPLIST_FILE = Walmart_SparkTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -667,6 +725,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CAE5A95423;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SourceCode/CORE",
+				);
 				INFOPLIST_FILE = Walmart_SparkUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -687,6 +749,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CAE5A95423;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SourceCode/CORE",
+				);
 				INFOPLIST_FILE = Walmart_SparkUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

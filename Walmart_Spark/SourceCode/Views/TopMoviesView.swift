@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import ComponentKit
 
 class TopMoviesView: UITableViewController,
-                     TopMoviesViewModelDelegate {
+                     TopMoviesViewModelDelegate,
+                     MBProgressHUDDelegate {
     @IBOutlet var customFooter: CustomFooter!
     var viewModel:TopMoviesViewModel = TopMoviesViewModel()
+    var HUD:MBProgressHUD = MBProgressHUD()
 
     //ViewModel delegate method(s)
     func didMakeRequestSuccess(){
@@ -26,10 +29,28 @@ class TopMoviesView: UITableViewController,
             Utils.displayAlert("", message: errorMsg,vc:self)
         }
     }
+    
+    func showProgress(){
+        self.view.addSubview(HUD)
+        
+        HUD.dimBackground = true
+        HUD.labelText = "Getting "
+        
+        HUD.detailsLabelText = "Top Movies"
+        HUD.show(true)
+    }
+    
+    func hideProgress(){
+        weak var weakSelf = self
+        DispatchQueue.main.async {
+            weakSelf?.HUD.hide(true,afterDelay:0)
+        }
+    }
 
     //View life cycle method(s)
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.HUD.delegate = self
         customFooter.isHidden = true
         viewModel.delegate = self
         viewModel.getTopMovies()

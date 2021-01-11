@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import ComponentKit
 
 class TopMoviesDetailView: UIViewController,
-                           TopMoviesDetailViewModelDelegate {
+                           TopMoviesDetailViewModelDelegate,
+                           MBProgressHUDDelegate {
     var viewModel:TopMoviesDetailViewModel = TopMoviesDetailViewModel()
     var selectedRow: DataModel.Result = DataModel.Result()
-    
+    var HUD:MBProgressHUD = MBProgressHUD()
+
     @IBOutlet weak var titleString: UILabel!
     @IBOutlet weak var overview: UITextView!
     @IBOutlet weak var release_date: UILabel!
@@ -24,26 +27,7 @@ class TopMoviesDetailView: UIViewController,
     @IBOutlet weak var genre_names: UILabel!
     @IBOutlet weak var poster_path_image: UIImageView!
     @IBOutlet weak var homepage: UILabel!
-        
-    //View life cycle method(s)
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupHomepageLink()
-        viewModel.delegate = self
-        viewModel.getMovie(selectedRow.id)
-        
-        titleString.text = viewModel.titleString(selectedRow.title)
-        overview.text = viewModel.overview(selectedRow.overview)
-        release_date.text = viewModel.release_date(selectedRow.release_date)
-        original_language.text = viewModel.original_language(selectedRow.original_language)
-        popularity.text = viewModel.popularity(selectedRow.popularity)
-        vote_average.text = viewModel.vote_average(selectedRow.vote_average)
-        vote_count.text = viewModel.vote_count(selectedRow.vote_count)
-        id.text = viewModel.id(selectedRow.id)
-        genre_names.text = viewModel.genre_names(selectedRow.genre_names)
-        poster_path_image.image = UIImage(data: viewModel.poster_path_image(selectedRow.poster_path_imageData))
-    }
-    
+       
     //TopMoviesDetailViewModel Delegate Method(s)
     func didMakeRequestSuccess(_ homepage:String) {
         weak var weakSelf = self
@@ -62,7 +46,44 @@ class TopMoviesDetailView: UIViewController,
             Utils.displayAlert("", message: errorMsg,vc:self)
         }
     }
-
+    
+    func showProgress(){
+        self.view.addSubview(HUD)
+        
+        HUD.dimBackground = true
+        HUD.labelText = "Getting "
+        
+        HUD.detailsLabelText = "Movies Details"
+        HUD.show(true)
+    }
+    
+    func hideProgress(){
+        weak var weakSelf = self
+        DispatchQueue.main.async {
+            weakSelf?.HUD.hide(true,afterDelay:0)
+        }
+    }
+    
+    //View life cycle method(s)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.HUD.delegate = self
+        setupHomepageLink()
+        viewModel.delegate = self
+        viewModel.getMovie(selectedRow.id)
+        
+        titleString.text = viewModel.titleString(selectedRow.title)
+        overview.text = viewModel.overview(selectedRow.overview)
+        release_date.text = viewModel.release_date(selectedRow.release_date)
+        original_language.text = viewModel.original_language(selectedRow.original_language)
+        popularity.text = viewModel.popularity(selectedRow.popularity)
+        vote_average.text = viewModel.vote_average(selectedRow.vote_average)
+        vote_count.text = viewModel.vote_count(selectedRow.vote_count)
+        id.text = viewModel.id(selectedRow.id)
+        genre_names.text = viewModel.genre_names(selectedRow.genre_names)
+        poster_path_image.image = UIImage(data: viewModel.poster_path_image(selectedRow.poster_path_imageData))
+    }
+    
     //Homepage link
     @objc func homepageLinkTapped(_ sender: UITapGestureRecognizer) {
         if let url = URL(string: self.homepage.text ?? "") {
