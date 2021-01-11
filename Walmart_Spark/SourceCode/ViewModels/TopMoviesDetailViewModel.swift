@@ -25,11 +25,7 @@ class TopMoviesDetailViewModel:NSObject {
         Services.makeRequest(request,
             callback:{(response:Services.Response) -> Void in
             if response.errorMsg == "" {
-                var homepage:String = response.movieDataModel.homepage
-                if homepage == "" {
-                   homepage = "No url."
-                }
-                weakSelf?.delegate?.didMakeRequestSuccess(homepage)
+                weakSelf?.delegate?.didMakeRequestSuccess(response.movieDataModel.homepage)
             }else{
                 weakSelf?.delegate?.didMakeRequestFailed(response.errorMsg)
             }
