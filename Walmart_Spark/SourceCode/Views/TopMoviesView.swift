@@ -11,7 +11,7 @@ import ComponentKit
 class TopMoviesView: UITableViewController,
                      TopMoviesViewModelDelegate,
                      MBProgressHUDDelegate {
-    @IBOutlet var customFooter: CustomFooter!
+    @IBOutlet weak var customFooter: CustomFooter!
     var viewModel:TopMoviesViewModel = TopMoviesViewModel()
     var HUD:MBProgressHUD = MBProgressHUD()
 
