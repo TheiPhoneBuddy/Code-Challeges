@@ -33,6 +33,7 @@ class Services:ServicesProtocol {
         var user:User = User()
         var token:String = ""
         var aryData:[Domain] = []
+        var aryPaymentMethod:[PaymentMethod] = []
     }
 
     //callback
@@ -77,23 +78,24 @@ class Services:ServicesProtocol {
                                                        options: .fragmentsAllowed)
         
         let session = URLSession(configuration: .default)
+        weak var weakSelf = self
         let task = session.dataTask(with: loginRequest) { (data, response, error) in
             guard error == nil else {
-                self.response.errorMsg = error?.localizedDescription
-                self.callback!(self.response)
+                weakSelf?.response.errorMsg = error?.localizedDescription
+                weakSelf?.callback!(self.response)
                 return
             }
 
             let authReponse = try! JSONDecoder().decode(LoginResponse.self, from: data!)
             
-            self.response.user = authReponse.user
-            self.response.token = authReponse.auth.token
+            weakSelf?.response.user = authReponse.user
+            weakSelf?.response.token = authReponse.auth.token
             
-            self.callback!(self.response)
+            weakSelf?.callback!(self.response)
         }
         task.resume()
     }
-    
+
     //search
     fileprivate func search() {
         let searchTerms = request.searchTerms
@@ -108,10 +110,13 @@ class Services:ServicesProtocol {
         var request = URLRequest(url: urlComponents.url!)
         request.httpMethod = self.request.httpMethod
 
+        let urlString:String = self.request.urlString
+        
+        weak var weakSelf = self
         let task = session.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
-                self.response.errorMsg = error?.localizedDescription
-                self.callback!(self.response)
+                weakSelf?.response.errorMsg = error?.localizedDescription
+                weakSelf?.callback!(self.response)
                 return
             }
 
@@ -119,7 +124,7 @@ class Services:ServicesProtocol {
                 let exactMatchResponse = try! JSONDecoder().decode(DomainSearchExactMatchResponse.self, from: data)
 
                 //https://gd.proxied.io/search/spins
-                var suggestionsComponents = URLComponents(string: self.request.urlString + "spins")!
+                var suggestionsComponents = URLComponents(string: urlString + "spins")!
                 suggestionsComponents.queryItems = [
                     URLQueryItem(name: "q", value: searchTerms)
                 ]
@@ -129,8 +134,8 @@ class Services:ServicesProtocol {
 
                 let suggestionsTask = session.dataTask(with: suggestionsRequest) { (suggestionsData, suggestionsResponse, suggestionsError) in
                     guard error == nil else {
-                        self.response.errorMsg = error?.localizedDescription
-                        self.callback!(self.response)
+                        weakSelf?.response.errorMsg = error?.localizedDescription
+                        weakSelf?.callback!(self.response)
                         return
                     }
 
@@ -150,8 +155,8 @@ class Services:ServicesProtocol {
                             return Domain(name: domain.fqdn, price: priceInfo.currentPriceDisplay, productId: domain.productId)
                         }
                         
-                        self.response.aryData = [exactDomain] + suggestionDomains
-                        self.callback!(self.response)
+                        weakSelf?.response.aryData = [exactDomain] + suggestionDomains
+                        weakSelf?.callback!(weakSelf?.response ?? Services.Response())
                     }
                 }
                 suggestionsTask.resume()
@@ -162,6 +167,24 @@ class Services:ServicesProtocol {
 
     //payment
     fileprivate func payment() {
-        self.callback!(Response())
+        //"https://gd.proxied.io/user/payment-methods"
+        let request = URLRequest(url: URL(string: self.request.urlString)!)
+        let session = URLSession(configuration: .default)
+        
+        weak var weakSelf = self
+        let task = session.dataTask(with: request) {
+            (data,response,error) in
+            guard error == nil else {
+                weakSelf?.response.errorMsg = error?.localizedDescription
+                weakSelf?.callback!(self.response)
+                return
+            }
+
+            weakSelf?.response.aryPaymentMethod = try!
+                JSONDecoder().decode([PaymentMethod].self, from: data ?? Data())
+
+            weakSelf?.callback!(self.response)
+        }
+        task.resume()
     }
 }

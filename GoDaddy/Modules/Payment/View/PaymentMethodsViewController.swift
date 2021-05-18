@@ -5,7 +5,7 @@ protocol PaymentMethodsViewControllerDelegate {
 }
 
 class PaymentMethodsViewController: UIViewController {
-
+    var viewModel:PaymentMethodsViewModel = PaymentMethodsViewModel()
     @IBOutlet var tableView: UITableView!
 
     var delegate: PaymentMethodsViewControllerDelegate?
@@ -13,21 +13,21 @@ class PaymentMethodsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
+        viewModel.getData()
+    }
+}
 
-        let request = URLRequest(url: URL(string: "https://gd.proxied.io/user/payment-methods")!)
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard error == nil else { return }
-
-            self.paymentMethods = try!
-                JSONDecoder().decode([PaymentMethod].self, from: data!)
-
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+extension PaymentMethodsViewController:PaymentMethodsViewModelDelegate {
+    func didMakeRequestSuccess() {
+        weak var weakSelf = self
+        DispatchQueue.main.async {
+            weakSelf?.tableView.reloadData()
         }
-
-        task.resume()
+    }
+    
+    func didMakeRequestFailed(_ errorMsg: String) {
+        print(errorMsg)
     }
 }
 
@@ -35,14 +35,15 @@ extension PaymentMethodsViewController: UITableViewDataSource, UITableViewDelega
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return paymentMethods?.count ?? 0
+        return viewModel.response.aryPaymentMethod.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
 
-        let method = paymentMethods![indexPath.row]
-
+        let method = viewModel.response.aryPaymentMethod[indexPath.row]
         cell.textLabel!.text = method.name
 
         if let lastFour = method.lastFour {
@@ -53,8 +54,9 @@ extension PaymentMethodsViewController: UITableViewDataSource, UITableViewDelega
 
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let method = paymentMethods![indexPath.row]
+        let method = viewModel.response.aryPaymentMethod[indexPath.row]
         PaymentsManager.shared.selectedPaymentMethod = method
         dismiss(animated: true) {
             self.delegate?.didSelectPaymentMethod()
