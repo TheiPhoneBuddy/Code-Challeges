@@ -27,7 +27,18 @@ extension PaymentMethodsViewController:PaymentMethodsViewModelDelegate {
     }
     
     func didMakeRequestFailed(_ errorMsg: String) {
-        print(errorMsg)
+        DispatchQueue.main.async {
+            let controller = UIAlertController(title: "All done!", message:errorMsg, preferredStyle: .alert)
+
+            let action = UIAlertAction(title: "Ok", style: .default) { _ in }
+
+            controller.addAction(action)
+
+            weak var weakSelf = self
+            DispatchQueue.main.async {
+                weakSelf?.present(controller, animated: true)
+            }
+        }
     }
 }
 
