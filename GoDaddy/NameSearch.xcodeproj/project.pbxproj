@@ -23,6 +23,7 @@
 		36B56C2E26543FC10013492F /* MockPaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B56C2D26543FC10013492F /* MockPaymentService.swift */; };
 		36B56C33265440120013492F /* PaymentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B56C32265440120013492F /* PaymentTests.swift */; };
 		36B56C3B265442BA0013492F /* Payment.json in Resources */ = {isa = PBXBuildFile; fileRef = 36B56C3A265442BA0013492F /* Payment.json */; };
+		36B56C432654453C0013492F /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B56C422654453C0013492F /* CartViewModel.swift */; };
 		36B63AFC26531EFA00F76FB4 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B63AF826531EF900F76FB4 /* Auth.swift */; };
 		36B63AFD26531EFA00F76FB4 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B63AF926531EF900F76FB4 /* LoginResponse.swift */; };
 		36B63AFE26531EFA00F76FB4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B63AFA26531EF900F76FB4 /* User.swift */; };
@@ -79,6 +80,7 @@
 		36B56C2D26543FC10013492F /* MockPaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentService.swift; sourceTree = "<group>"; };
 		36B56C32265440120013492F /* PaymentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTests.swift; sourceTree = "<group>"; };
 		36B56C3A265442BA0013492F /* Payment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Payment.json; sourceTree = "<group>"; };
+		36B56C422654453C0013492F /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		36B63AF826531EF900F76FB4 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		36B63AF926531EF900F76FB4 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		36B63AFA26531EF900F76FB4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 		36B63B2B2653215600F76FB4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				36B56C422654453C0013492F /* CartViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				36B63B392653232900F76FB4 /* LoginViewModel.swift in Sources */,
 				BC0E115F2502F6E1007560B1 /* AppDelegate.swift in Sources */,
 				36B63B132653205400F76FB4 /* PaymentMethodsViewController.swift in Sources */,
+				36B56C432654453C0013492F /* CartViewModel.swift in Sources */,
 				36B63AFF26531EFA00F76FB4 /* AuthManager.swift in Sources */,
 				36B63B2E2653215600F76FB4 /* CartViewController.swift in Sources */,
 				36B63AFE26531EFA00F76FB4 /* User.swift in Sources */,

@@ -15,6 +15,7 @@ class Services:ServicesProtocol {
         case Login
         case Search
         case Payment
+        case ShoppingCart
     }
     
     //Request
@@ -25,6 +26,8 @@ class Services:ServicesProtocol {
         var username:String = ""
         var password:String = ""
         var searchTerms:String = ""
+        var auth:String = ""
+        var token:String = ""
     }
 
     //Response
@@ -57,6 +60,8 @@ class Services:ServicesProtocol {
             search()
         case .Payment:
             payment()
+        case .ShoppingCart:
+            shoppingCart()
             
         default:
             response.errorMsg = "Invalid endpoint."
@@ -184,6 +189,37 @@ class Services:ServicesProtocol {
                 JSONDecoder().decode([PaymentMethod].self, from: data ?? Data())
 
             weakSelf?.callback!(self.response)
+        }
+        task.resume()
+    }
+    
+    //shoppingCart
+    func shoppingCart() {
+        let urlString:String = self.request.urlString
+        let auth:String = self.request.auth
+        let token:String = self.request.token
+
+        let dict: [String: String] = [
+            "auth": auth,
+            "token": token
+        ]
+
+        //https://gd.proxied.io/payments/process
+        var request = URLRequest(url: URL(string: urlString)!)
+        request.httpMethod = "POST"
+        request.httpBody = try! JSONSerialization.data(withJSONObject: dict, options: .fragmentsAllowed)
+
+        let session = URLSession(configuration: .default)
+        
+        weak var weakSelf = self
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                weakSelf?.response.errorMsg = error.localizedDescription
+                weakSelf?.callback!(self.response)
+            } else {
+                weakSelf?.callback!(self.response)
+            }
+            return
         }
         task.resume()
     }

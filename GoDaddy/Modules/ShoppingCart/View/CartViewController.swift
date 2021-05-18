@@ -1,6 +1,7 @@
 import UIKit
 
 class CartViewController: UIViewController {
+    var viewModel:CartViewModel = CartViewModel()
 
     @IBOutlet var payButton: UIButton!
     @IBOutlet var tableView: UITableView!
@@ -15,6 +16,7 @@ class CartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
 
         tableView.register(UINib(nibName: "CartItemTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "CartItemCell")
         updatePayButton()
@@ -33,68 +35,52 @@ class CartViewController: UIViewController {
     }
 
     func updatePayButton() {
-        if PaymentsManager.shared.selectedPaymentMethod == nil {
-            payButton.setTitle("Select a Payment Method", for: .normal)
-        } else {
-            var totalPayment = 0.00
-
-            ShoppingCart.shared.domains.forEach {
-                let priceDouble:Double? = Double($0.price.replacingOccurrences(of: "$", with: ""))
-                totalPayment += priceDouble ?? 0.0
-            }
-
-            let currencyFormatter = NumberFormatter()
-            currencyFormatter.numberStyle = .currency
-
-            payButton.setTitle("Pay \(currencyFormatter.string(from: NSNumber(value: totalPayment))!) Now", for: .normal)
-        }
+        payButton.setTitle(viewModel.getPayButtonText(), for: .normal)
     }
 
     func performPayment() {
         payButton.isEnabled = false
-
-        let dict: [String: String] = [
-            "auth": AuthManager.shared.token!,
-            "token": PaymentsManager.shared.selectedPaymentMethod!.token
-        ]
-
-        var request = URLRequest(url: URL(string: "https://gd.proxied.io/payments/process")!)
-        request.httpMethod = "POST"
-        request.httpBody = try! JSONSerialization.data(withJSONObject: dict, options: .fragmentsAllowed)
-
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                let controller = UIAlertController(title: "Oops!", message: error.localizedDescription, preferredStyle: .alert)
-
-                let action = UIAlertAction(title: "Ok", style: .cancel) { _ in
-                    self.payButton.isEnabled = true
-                }
-
-                controller.addAction(action)
-
-                DispatchQueue.main.async {
-                    self.present(controller, animated: true)
-                }
-            } else {
-                let controller = UIAlertController(title: "All done!", message: "Your purchase is complete!", preferredStyle: .alert)
-
-                let action = UIAlertAction(title: "Ok", style: .default) { _ in }
-
-                controller.addAction(action)
-
-                DispatchQueue.main.async {
-                    self.present(controller, animated: true)
-                }
-            }
-
-        }
-        task.resume()
+        
+        let auth:String = AuthManager.shared.token ?? ""
+        let token:String = PaymentsManager.shared.selectedPaymentMethod?.token ?? ""
+        viewModel.shoppingCart(auth, token: token)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! PaymentMethodsViewController
         vc.delegate = self
+    }
+}
+
+extension CartViewController:CartViewModelDelegate {
+    func didMakeRequestSuccess() {
+        DispatchQueue.main.async {
+            let controller = UIAlertController(title: "All done!", message: "Your purchase is complete!", preferredStyle: .alert)
+
+            let action = UIAlertAction(title: "Ok", style: .default) { _ in }
+
+            controller.addAction(action)
+
+            weak var weakSelf = self
+            DispatchQueue.main.async {
+                weakSelf?.present(controller, animated: true)
+            }
+        }
+    }
+    
+    func didMakeRequestFailed(_ errorMsg: String) {
+        let controller = UIAlertController(title: "Oops!", message: errorMsg, preferredStyle: .alert)
+
+        let action = UIAlertAction(title: "Ok", style: .cancel) { _ in
+            self.payButton.isEnabled = true
+        }
+
+        controller.addAction(action)
+
+        weak var weakSelf = self
+        DispatchQueue.main.async {
+            weakSelf?.present(controller, animated: true)
+        }
     }
 }
 
