@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Visa",
+        "lastFour": "0123",
+        "token": "fd9292c3-1686-4097-b42a-b9bbfda0550a"
+    },
+    {
+        "name": "MasterCard",
+        "lastFour": "7890",
+        "token": "9ef4c2c2-f86c-4645-94be-35ae2ab21837"
+    },
+    {
+        "name": "PayPal",
+        "displayFormattedEmail": "gd***st@g*.com",
+        "token": "ea053f22-379e-4f68-b24b-544f94996d1a"
+    }
+]

@@ -1,6 +1,11 @@
 struct PaymentMethod: Decodable {
     let name: String
     let token: String
-    let lastFour: String?
-    let displayFormattedEmail: String?
+    var lastFour: String? = nil
+    var displayFormattedEmail: String? = nil
+    
+    init(name:String,token:String) {
+        self.name = name
+        self.token = token
+    }
 }
