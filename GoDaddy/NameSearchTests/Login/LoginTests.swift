@@ -10,19 +10,26 @@
 import XCTest
 
 class LoginTests: XCTestCase {
-    var mock:MockLoginService = MockLoginService()
-    var viewModel:LoginViewModel = LoginViewModel()
-    
-    override func setUp() {
-        viewModel = .init(service: mock)
-    }
-
     //Happy Path
     func testLoginService() {
-        viewModel.login("", password: "")
+        let mock:MockLoginService = MockLoginService()
+        var viewModel:LoginViewModel = LoginViewModel()
+        viewModel = .init(service: mock)
+        viewModel.login("test user", password: "test password")
         
-        XCTAssertNotNil(viewModel.response.user.first)
-        XCTAssertNotNil(viewModel.response.user.last)
-        XCTAssertNotNil(viewModel.response.token)
+        XCTAssertNotEqual(viewModel.response.user.first, "")
+        XCTAssertNotEqual(viewModel.response.user.last, "")
+        XCTAssertNotEqual(viewModel.response.token, "")
+        XCTAssertEqual(viewModel.response.errorMsg, nil)
+     }
+    
+    func testInvalidToken() {
+        let mock:MockLoginInvalidToken = MockLoginInvalidToken()
+        var viewModel:LoginViewModel = LoginViewModel()
+        viewModel = .init(service: mock)
+        viewModel.login("test user", password: "test password")
+
+        //token is blank
+        XCTAssertEqual(viewModel.response.token, "")
     }
 }
