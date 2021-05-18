@@ -24,14 +24,12 @@ class LoginViewController: UIViewController,
 }
 
 extension LoginViewController:LoginViewModelDelegate {
-    //didMakeRequestSuccess
     func didMakeRequestSuccess() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "showDomainSearch", sender: self)
         }
     }
     
-    //didMakeRequestFailed
     func didMakeRequestFailed(_ errorMsg: String) {
         print(errorMsg)
     }

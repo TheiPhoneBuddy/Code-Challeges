@@ -14,6 +14,10 @@
 		364EF54026535EB8005B8572 /* MockLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EF53F26535EB8005B8572 /* MockLogin.swift */; };
 		364EF55326536422005B8572 /* ServicesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EF54E265363CC005B8572 /* ServicesProtocol.swift */; };
 		364EF5612653673D005B8572 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B63AFA26531EF900F76FB4 /* User.swift */; };
+		364EF59B2653A4F6005B8572 /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EF5902653A3BE005B8572 /* Domain.swift */; };
+		364EF5A22653A518005B8572 /* DomainSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EF58326538BC3005B8572 /* DomainSearchViewModel.swift */; };
+		364EF5A72653AF63005B8572 /* SearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EF5A62653AF63005B8572 /* SearchTests.swift */; };
+		364EF5AC2653B03C005B8572 /* MockSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EF5AB2653B03C005B8572 /* MockSearchService.swift */; };
 		36B63AFC26531EFA00F76FB4 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B63AF826531EF900F76FB4 /* Auth.swift */; };
 		36B63AFD26531EFA00F76FB4 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B63AF926531EF900F76FB4 /* LoginResponse.swift */; };
 		36B63AFE26531EFA00F76FB4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B63AFA26531EF900F76FB4 /* User.swift */; };
@@ -61,6 +65,10 @@
 		364EF53A26535E73005B8572 /* Login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Login.json; sourceTree = "<group>"; };
 		364EF53F26535EB8005B8572 /* MockLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLogin.swift; sourceTree = "<group>"; };
 		364EF54E265363CC005B8572 /* ServicesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesProtocol.swift; sourceTree = "<group>"; };
+		364EF58326538BC3005B8572 /* DomainSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainSearchViewModel.swift; sourceTree = "<group>"; };
+		364EF5902653A3BE005B8572 /* Domain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
+		364EF5A62653AF63005B8572 /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
+		364EF5AB2653B03C005B8572 /* MockSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchService.swift; sourceTree = "<group>"; };
 		36B63AF826531EF900F76FB4 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		36B63AF926531EF900F76FB4 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		36B63AFA26531EF900F76FB4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -145,6 +153,8 @@
 		364EF52E26535B33005B8572 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				364EF5AB2653B03C005B8572 /* MockSearchService.swift */,
+				364EF5A62653AF63005B8572 /* SearchTests.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -256,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				36B63B1B265320D300F76FB4 /* DomainSearchResponseTypes.swift */,
+				364EF5902653A3BE005B8572 /* Domain.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -271,6 +282,7 @@
 		36B63B1E265320D300F76FB4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				364EF58326538BC3005B8572 /* DomainSearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -488,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				364EF50E26533961005B8572 /* Services.swift in Sources */,
+				364EF5A22653A518005B8572 /* DomainSearchViewModel.swift in Sources */,
 				36B63B2F2653215600F76FB4 /* CartItemTableViewCell.swift in Sources */,
 				36B63B122653205400F76FB4 /* PaymentMethod.swift in Sources */,
 				36B63B0726531F5500F76FB4 /* LoginViewController.swift in Sources */,
@@ -498,6 +511,7 @@
 				36B63AFF26531EFA00F76FB4 /* AuthManager.swift in Sources */,
 				36B63B2E2653215600F76FB4 /* CartViewController.swift in Sources */,
 				36B63AFE26531EFA00F76FB4 /* User.swift in Sources */,
+				364EF59B2653A4F6005B8572 /* Domain.swift in Sources */,
 				364EF52826533F7E005B8572 /* Utils.swift in Sources */,
 				36B63AFD26531EFA00F76FB4 /* LoginResponse.swift in Sources */,
 				364EF55326536422005B8572 /* ServicesProtocol.swift in Sources */,
@@ -514,6 +528,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				364EF53326535C00005B8572 /* LoginTests.swift in Sources */,
+				364EF5AC2653B03C005B8572 /* MockSearchService.swift in Sources */,
+				364EF5A72653AF63005B8572 /* SearchTests.swift in Sources */,
 				364EF54026535EB8005B8572 /* MockLogin.swift in Sources */,
 				364EF5612653673D005B8572 /* User.swift in Sources */,
 			);

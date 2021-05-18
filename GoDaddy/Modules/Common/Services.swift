@@ -24,6 +24,7 @@ class Services:ServicesProtocol {
         var urlString:String = ""
         var username:String = ""
         var password:String = ""
+        var searchTerms:String = ""
     }
 
     //Response
@@ -31,6 +32,7 @@ class Services:ServicesProtocol {
         var errorMsg:String?
         var user:User = User()
         var token:String = ""
+        var aryData:[Domain] = []
     }
 
     //callback
@@ -94,7 +96,68 @@ class Services:ServicesProtocol {
     
     //search
     fileprivate func search() {
-        self.callback!(Response())
+        let searchTerms = request.searchTerms
+        let session = URLSession(configuration: .default)
+
+        //"https://gd.proxied.io/search/exact
+        var urlComponents = URLComponents(string: self.request.urlString + "exact")!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "q", value: searchTerms)
+        ]
+
+        var request = URLRequest(url: urlComponents.url!)
+        request.httpMethod = self.request.httpMethod
+
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard error == nil else {
+                self.response.errorMsg = error?.localizedDescription
+                self.callback!(self.response)
+                return
+            }
+
+            if let data = data {
+                let exactMatchResponse = try! JSONDecoder().decode(DomainSearchExactMatchResponse.self, from: data)
+
+                //https://gd.proxied.io/search/spins
+                var suggestionsComponents = URLComponents(string: self.request.urlString + "spins")!
+                suggestionsComponents.queryItems = [
+                    URLQueryItem(name: "q", value: searchTerms)
+                ]
+
+                var suggestionsRequest = URLRequest(url: suggestionsComponents.url!)
+                suggestionsRequest.httpMethod = "GET"
+
+                let suggestionsTask = session.dataTask(with: suggestionsRequest) { (suggestionsData, suggestionsResponse, suggestionsError) in
+                    guard error == nil else {
+                        self.response.errorMsg = error?.localizedDescription
+                        self.callback!(self.response)
+                        return
+                    }
+
+                    if let suggestionsData = suggestionsData {
+                        let suggestionsResponse = try! JSONDecoder().decode(DomainSearchRecommendedResponse.self, from: suggestionsData)
+
+                        let exactDomainPriceInfo = exactMatchResponse.products.first(where: { $0.productId == exactMatchResponse.domain.productId })!.priceInfo
+                        let exactDomain = Domain(name: exactMatchResponse.domain.fqdn,
+                                                 price: exactDomainPriceInfo.currentPriceDisplay,
+                                                 productId: exactMatchResponse.domain.productId)
+
+                        let suggestionDomains = suggestionsResponse.domains.map { domain -> Domain in
+                            let priceInfo = suggestionsResponse.products.first(where: { price in
+                                price.productId == domain.productId
+                            })!.priceInfo
+
+                            return Domain(name: domain.fqdn, price: priceInfo.currentPriceDisplay, productId: domain.productId)
+                        }
+                        
+                        self.response.aryData = [exactDomain] + suggestionDomains
+                        self.callback!(self.response)
+                    }
+                }
+                suggestionsTask.resume()
+            }
+        }
+        task.resume()
     }
 
     //payment

@@ -17,11 +17,12 @@ class LoginTests: XCTestCase {
         viewModel = .init(service: mock)
     }
 
+    //Happy Path
     func testLoginService() {
         viewModel.login("", password: "")
         
-        XCTAssertNotNil(AuthManager.shared.user?.first)
-        XCTAssertNotNil(AuthManager.shared.user?.last)
-        XCTAssertNotNil(AuthManager.shared.token)
+        XCTAssertNotNil(viewModel.response.user.first)
+        XCTAssertNotNil(viewModel.response.user.last)
+        XCTAssertNotNil(viewModel.response.token)
     }
 }
