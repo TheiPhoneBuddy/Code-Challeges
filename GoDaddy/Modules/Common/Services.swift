@@ -91,7 +91,7 @@ class Services:ServicesProtocol {
                 return
             }
 
-            let authReponse = try! JSONDecoder().decode(LoginResponse.self, from: data!)
+            let authReponse = try! JSONDecoder().decode(LoginResponse.self, from: data ?? Data())
             
             weakSelf?.response.user = authReponse.user
             weakSelf?.response.token = authReponse.auth.token
