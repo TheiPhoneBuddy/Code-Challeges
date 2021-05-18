@@ -20,6 +20,9 @@
 		364EF5AC2653B03C005B8572 /* MockSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364EF5AB2653B03C005B8572 /* MockSearchService.swift */; };
 		36B56C17265431330013492F /* Search.json in Resources */ = {isa = PBXBuildFile; fileRef = 36B56C16265431330013492F /* Search.json */; };
 		36B56C20265432350013492F /* PaymentMethodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B56C1B265431C50013492F /* PaymentMethodsViewModel.swift */; };
+		36B56C2E26543FC10013492F /* MockPaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B56C2D26543FC10013492F /* MockPaymentService.swift */; };
+		36B56C33265440120013492F /* PaymentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B56C32265440120013492F /* PaymentTests.swift */; };
+		36B56C3B265442BA0013492F /* Payment.json in Resources */ = {isa = PBXBuildFile; fileRef = 36B56C3A265442BA0013492F /* Payment.json */; };
 		36B63AFC26531EFA00F76FB4 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B63AF826531EF900F76FB4 /* Auth.swift */; };
 		36B63AFD26531EFA00F76FB4 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B63AF926531EF900F76FB4 /* LoginResponse.swift */; };
 		36B63AFE26531EFA00F76FB4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B63AFA26531EF900F76FB4 /* User.swift */; };
@@ -73,6 +76,9 @@
 		364EF5AB2653B03C005B8572 /* MockSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchService.swift; sourceTree = "<group>"; };
 		36B56C16265431330013492F /* Search.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Search.json; sourceTree = "<group>"; };
 		36B56C1B265431C50013492F /* PaymentMethodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsViewModel.swift; sourceTree = "<group>"; };
+		36B56C2D26543FC10013492F /* MockPaymentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPaymentService.swift; sourceTree = "<group>"; };
+		36B56C32265440120013492F /* PaymentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTests.swift; sourceTree = "<group>"; };
+		36B56C3A265442BA0013492F /* Payment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Payment.json; sourceTree = "<group>"; };
 		36B63AF826531EF900F76FB4 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		36B63AF926531EF900F76FB4 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		36B63AFA26531EF900F76FB4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -150,6 +156,9 @@
 		364EF52D26535B33005B8572 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				36B56C3A265442BA0013492F /* Payment.json */,
+				36B56C2D26543FC10013492F /* MockPaymentService.swift */,
+				36B56C32265440120013492F /* PaymentTests.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -157,8 +166,8 @@
 		364EF52E26535B33005B8572 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				364EF5AB2653B03C005B8572 /* MockSearchService.swift */,
 				36B56C16265431330013492F /* Search.json */,
+				364EF5AB2653B03C005B8572 /* MockSearchService.swift */,
 				364EF5A62653AF63005B8572 /* SearchTests.swift */,
 			);
 			path = Search;
@@ -488,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				364EF53B26535E73005B8572 /* Login.json in Resources */,
+				36B56C3B265442BA0013492F /* Payment.json in Resources */,
 				36B56C17265431330013492F /* Search.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,9 +547,11 @@
 			files = (
 				364EF53326535C00005B8572 /* LoginTests.swift in Sources */,
 				364EF5AC2653B03C005B8572 /* MockSearchService.swift in Sources */,
+				36B56C2E26543FC10013492F /* MockPaymentService.swift in Sources */,
 				364EF5A72653AF63005B8572 /* SearchTests.swift in Sources */,
 				364EF54026535EB8005B8572 /* MockLogin.swift in Sources */,
 				364EF5612653673D005B8572 /* User.swift in Sources */,
+				36B56C33265440120013492F /* PaymentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
