@@ -1,42 +1,38 @@
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController,
+                           UITextFieldDelegate {
+    var viewModel:LoginViewModel = LoginViewModel()
 
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
 
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        var request = URLRequest(url: URL(string: "https://gd.proxied.io/auth/login")!)
-        request.httpMethod = "POST"
-        
-        let dict: [String: String] = [
-            "username": usernameTextField.text!,
-            "password": passwordTextField.text!
-        ]
-
-        request.httpBody = try! JSONSerialization.data(withJSONObject: dict, options: .fragmentsAllowed)
-
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            guard error == nil else {
-                return
-            }
-
-            let authReponse = try! JSONDecoder().decode(LoginResponse.self, from: data!)
-
-            AuthManager.shared.user = authReponse.user
-            AuthManager.shared.token = authReponse.auth.token
-
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "showDomainSearch", sender: self)
-            }
-        }
-
-        task.resume()
+        viewModel.login(usernameTextField.text ?? "",
+                        password: passwordTextField.text ?? "")
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.delegate = self
+    }
+}
+
+extension LoginViewController:LoginViewModelDelegate {
+    //didMakeRequestSuccess
+    func didMakeRequestSuccess() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "showDomainSearch", sender: self)
+        }
+    }
+    
+    //didMakeRequestFailed
+    func didMakeRequestFailed(_ errorMsg: String) {
+        print(errorMsg)
     }
 }
