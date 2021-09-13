@@ -7,6 +7,19 @@
 import Foundation
 
 /*
+    private func testGetData() {
+        let fileName:String = ""
+ 
+        let data:Data = Utils.readFile(fileName) ?? Data()
+        let decoder = JSONDecoder()
+        if let tmp = try?decoder.decode(DataModel.self,
+                                         from: data){
+          print(tmp)
+        } else {
+            print("error")
+        }
+    }
+
  public struct Text: Decodable {
      var text:String
 
