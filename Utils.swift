@@ -6,6 +6,25 @@
 //
 import Foundation
 
+/*
+ public struct Text: Decodable {
+     var text:String
+
+     enum CodingKeys: String, CodingKey {
+         case text
+     }
+
+     public init() {
+         text = ""
+     }
+
+     public init(from decoder:Decoder) throws {
+         let container = try decoder.container(keyedBy: CodingKeys.self)
+         text = try (container.decodeIfPresent(String.self, forKey: .text) ?? "")
+     }
+ }
+ */
+
 class Utils {
     //convertToDict
     static func convertToDict(_ data:Data) -> [String:Any] {
